@@ -1,5 +1,5 @@
 a = int
-n = int
+n = int                                # Source link : https://stonesoupprogramming.com/2017/05/21/circular-linked-list-python/
 
 class Node(object) :
     def __init__(self,a , n = None, ):# Node object class definition with two attributes
@@ -33,7 +33,7 @@ class CircularLinkedList(object): # Circular linked list class definition
             new_node = Node(a,self.root.get_next_node())
             self.set_next (new_node)
         self.size +=1
-    def deletion(self,a):  # this method allow us to remove a link in the list . The runtime = O (n*n*n*n) and space =O(n)
+    def deletion(self,a):  # this method allow us to remove a link in the list . The runtime = O (n^2) and space =O(n)
         target_node = self.root    # target _node stand for the node we want to delete
         previous_node = None
         while True :
@@ -51,7 +51,7 @@ class CircularLinkedList(object): # Circular linked list class definition
                 return False
             previous_node = target_node
             target_node  = target_node.get_next_node()
-    def searching(self,a):          # this method allows us to  seacrch a node and get data from it. The runtime = O(n*n*n)
+    def searching(self,a):          # this method allows us to  seacrch a node and get data from it. The runtime = O(n^2)
                                     # the space (n)
         target_node = self.head # the target_node here is the node we are searching .
         while True :
@@ -69,3 +69,6 @@ class CircularLinkedList(object): # Circular linked list class definition
         while target_node.get_next_node() != self.head:
               target_node = target_node.get_next_node()
               print (target_node.to_string())
+
+
+

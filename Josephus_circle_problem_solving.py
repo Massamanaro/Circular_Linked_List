@@ -1,8 +1,8 @@
 m = int
 
-class Node:
+class Node:                 # PART 3 Josephus problem solving :
     def __init__(self, m):   # definition of the node class
-        self.data = m         # In this part 3 we have to mention that our circular linked list has an end an a beginning
+        self.data = m         # In this part 3 we have to mention that our circular linked list has an end and a beginning
                               # so we will have  a previous node and an after node
         self.next = None
 
@@ -57,7 +57,7 @@ class CircularLinkedList ():    #definition  of the List class
 
 
 def has_one_node(josephuslist): # this method defines the josephus problem solving modelling
-    if josephuslist.head.next == josephuslist.head: # josephuslist stands for the number of people in our list
+    if josephuslist.head.next == josephuslist.head: # josephuslist stands for the range of the number of people in our list
         return True
     else:
         return False
@@ -68,16 +68,17 @@ def get_josephus_solution(josephuslist, m):  # m stands for the position of the 
         return None
     start = josephuslist.head
     while not has_one_node(josephuslist):
-        to_remove = josephuslist.get_node(m - 1, start)# one someone is killed it discount the position by doing minus one
+        to_remove = josephuslist.get_node(m - 1, start)# once someone is killed it discount the position by doing minus one
         start = to_remove.next
         josephuslist.remove(to_remove)
     return josephuslist.head.data
 
 josephuslist = CircularLinkedList()    # it will print the result when inputs are executed and will tell which person will die
                                        # by showing his position
-n = int(input('Input number of people: '))
-m = int(input('The mth person will be executed. Input m: '))
-for i in range(1, n + 1):
+n = int(input('Type the number of people in the Josephus circle : '))
+m = int(input('The mth person will be executed. Type m: '))
+for i in range(1, n + 1): # this for loop allows to add people in the list as the list will be updating untill we got
+                           # the last person that will not be killed. The runtime here is O(n).
     josephuslist.append(i)
 
 ans = get_josephus_solution(josephuslist, m)
